@@ -29,7 +29,7 @@ env:
   DEBIAN_FRONTEND: noninteractive
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: 'x86_64.config'
+  CONFIG_FILE: configs/x86_64.config
 
 jobs:
   build:
