@@ -15,7 +15,7 @@ on:
   
   #push:
   # branches: 
-  #   - master
+  #   - main
 
   #schedule:
   #  - cron: 0 8 * * 5
@@ -37,9 +37,9 @@ jobs:
     timeout-minutes: 720
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
 
-    - name: Initialization environment
+    - name: Initialize environment
       run: |
         set +e
         docker rmi `docker images -q`
@@ -105,7 +105,7 @@ jobs:
         make -j$(nproc) V=s
 
     - name : Upload artifact
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@main
       with:
         name: OpenWrt
         path: openwrt/bin
