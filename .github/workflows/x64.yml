@@ -10,7 +10,7 @@ env:
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: configs/x86_64.config
-  SYS_CONF_SH: configure.sh
+  SYS_CONF_SH: customize.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
