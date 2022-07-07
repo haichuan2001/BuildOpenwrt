@@ -1,3 +1,10 @@
+#=================================================
+# Description: Build OpenWrt using GitHub Actions
+# Lisence: MIT
+# Author: Carbon
+# Youtube Channel: 
+#=================================================
+
 name: Build_X64
 
 on:
