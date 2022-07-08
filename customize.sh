@@ -11,3 +11,7 @@ echo "src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> 
 # 替换默认主题
 rm -rf package/lean/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
+
+# vssr
+git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
+git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
