@@ -65,6 +65,7 @@ jobs:
 
     - name: Install feeds
       run: |
+        cp mosdnsMakefile openwrt/package/feeds/kenzo/luci-app-mosdns/Makefile
         cd openwrt 
         # 替换默认主题
         rm -rf package/lean/luci-theme-argon
@@ -78,16 +79,13 @@ jobs:
       run: |
         #[ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        touch openwrt/.config
+        cd openwrt && make defconfig
 
 
     - name: Download package
       id: package
       run: |
-        cp mosdnsMakefile openwrt/package/feeds/kenzo/luci-app-mosdns/Makefile
         cd openwrt
-        touch package/feeds/kenzo/luci-app-mosdns/Makefile
-        touch .config
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
@@ -96,7 +94,6 @@ jobs:
       id: compile
       run: |
         cd openwrt
-        touch .config
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j2 || make -j1 V=s
         echo "::set-output name=status::success"
