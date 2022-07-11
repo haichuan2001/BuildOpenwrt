@@ -61,6 +61,7 @@ jobs:
     - name: Update feeds
       run: |
         cd openwrt 
+        find -type f -name Makefile -exec sed -ri  's#mosdns[-_]neo#mosdns#g' {} \;
         ./scripts/feeds update -a
 
     - name: Install feeds
@@ -78,6 +79,7 @@ jobs:
       run: |
         #[ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        touch openwrt/.config
 
 
     - name: Download package
