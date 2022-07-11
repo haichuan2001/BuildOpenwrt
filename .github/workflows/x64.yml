@@ -68,7 +68,9 @@ jobs:
         cd openwrt 
         # 替换默认主题
         rm -rf package/lean/luci-theme-argon
+        rm -rf kenzo/luci-theme-argon kenzo/luci-theme-argonne
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
+
         ./scripts/feeds install -a 
         ./scripts/feeds install -a
 
