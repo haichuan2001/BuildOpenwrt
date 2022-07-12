@@ -25,6 +25,7 @@ env:
 
 jobs:
   build:
+    timeout-minutes: 720
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout
@@ -61,6 +62,7 @@ jobs:
       run: |
         cd openwrt 
         ./scripts/feeds update -a
+        sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
 
     - name: Install feeds
       run: |
@@ -71,6 +73,7 @@ jobs:
         rm -rf package/feeds/kenzo/luci-theme-argon package/feeds/kenzo/luci-theme-argonne
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
 
+        sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
         ./scripts/feeds install -a -f
         sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
         ./scripts/feeds install -a -f
@@ -94,7 +97,7 @@ jobs:
         find dl -size -1024c -exec rm -f {} \;
 
     - name: Compile the firmware
-      timeout-minutes: 720
+      #timeout-minutes: 720
       id: compile
       run: |
         cd openwrt
