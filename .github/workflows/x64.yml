@@ -24,10 +24,8 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  timeout-minutes: 720
   build:
     runs-on: ubuntu-20.04
-
     steps:
     - name: Checkout
       uses: actions/checkout@main
@@ -93,6 +91,7 @@ jobs:
         find dl -size -1024c -exec rm -f {} \;
 
     - name: Compile the firmware
+      timeout-minutes: 720
       id: compile
       run: |
         cd openwrt
