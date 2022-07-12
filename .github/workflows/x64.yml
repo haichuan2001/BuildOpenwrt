@@ -62,29 +62,24 @@ jobs:
       run: |
         cd openwrt 
         ./scripts/feeds update -a
-        sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
 
     - name: Install feeds
       run: |
         cd openwrt 
         # 替换默认主题
         rm -rf package/lean/luci-theme-argon
-        rm -rf kenzo/luci-theme-argon kenzo/luci-theme-argonne
-        rm -rf package/feeds/kenzo/luci-theme-argon package/feeds/kenzo/luci-theme-argonne
+        rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
 
-        sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
         ./scripts/feeds install -a -f
         sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
         ./scripts/feeds install -a -f
-        sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
 
     - name: Load custom configuration
       run: |
         #[ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         cd openwrt
-        sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
         make defconfig
 
 
