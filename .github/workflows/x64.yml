@@ -17,7 +17,7 @@ env:
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: configs/x86_64.config
-  SYS_CONF_SH: customize.sh
+  CUSTOMIZE_CONF: customize.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -53,9 +53,9 @@ jobs:
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $SYS_CONF_SH
+        chmod +x $CUSTOMIZE_CONF
         cd openwrt
-        $GITHUB_WORKSPACE/$SYS_CONF_SH
+        $GITHUB_WORKSPACE/$CUSTOMIZE_CONF
 
     - name: Update feeds
       run: |
