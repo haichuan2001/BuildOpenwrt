@@ -23,7 +23,6 @@ env:
   CUSTOMIZE_SH: diy.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain
-  CLASH_BINARY_PLATFORM: amd64
   TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
   TZ: Asia/Shanghai
