@@ -74,15 +74,13 @@ jobs:
         ./scripts/feeds install -a -f
         rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
 
-
-
     - name: Load configuration
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         cd openwrt
         make defconfig
 
-	- name: Free up disk space
+    - name: Free up disk space
       if: env.FREE_UP_DISK == 'true'
       env:
         DEBIAN_FRONTEND: noninteractive

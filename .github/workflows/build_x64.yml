@@ -304,8 +304,7 @@ jobs:
           $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
           make defconfig
 
-
-	  - name: Free up disk space
+      - name: Free up disk space
         if: env.FREE_UP_DISK == 'true'
         env:
           DEBIAN_FRONTEND: noninteractive
