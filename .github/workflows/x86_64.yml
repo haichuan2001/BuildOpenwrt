@@ -66,12 +66,12 @@ jobs:
         cd openwrt 
 
         [ -e $MOSMK ] && sed -ri  's#mosdns[-_]neo#mosdns#g' $MOSMK
-        rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
         ./scripts/feeds install -a -f
+        rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
 
         [ -e $MOSMK ] && sed -ri  's#mosdns[-_]neo#mosdns#g' $MOSMK
-        rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
         ./scripts/feeds install -a -f
+        rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
 
 
 
