@@ -18,6 +18,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: configs/x86_64.config
   CUSTOMIZE_CONF: customize.sh
+  MOSMK: package/feeds/kenzo/luci-app-mosdns/Makefile
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -64,14 +65,14 @@ jobs:
       run: |
         cd openwrt 
 
-        ./scripts/feeds install -a -f
-        sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
+        [ -e $MOSMK ] && sed -ri  's#mosdns[-_]neo#mosdns#g' $MOSMK
+        rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
         ./scripts/feeds install -a -f
 
-        # 替换默认主题
-        rm -rf package/lean/luci-theme-argon
+        [ -e $MOSMK ] && sed -ri  's#mosdns[-_]neo#mosdns#g' $MOSMK
         rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
-        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
+        ./scripts/feeds install -a -f
+
 
 
     - name: Load custom configuration
