@@ -25,6 +25,7 @@ env:
   TOOLCHAIN_TAG: toolchain
   TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
+  FREE_UP_DISK: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -302,6 +303,18 @@ jobs:
           chmod +x $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
           $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
           make defconfig
+
+
+	  - name: Free up disk space
+        if: env.FREE_UP_DISK == 'true'
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          docker rmi `docker images -q`
+          sudo -E apt-get -q purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
+          sudo -E apt-get -qq autoremove --purge
+          sudo -E apt-get -qq clean
 
       - name: Download DL Package
         id: download
