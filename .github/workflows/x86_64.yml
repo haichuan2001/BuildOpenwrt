@@ -83,6 +83,7 @@ jobs:
 
 
     - name: Download package
+      timeout-minutes: 1200
       id: package
       run: |
         cd openwrt
@@ -91,6 +92,7 @@ jobs:
         find dl -size -1024c -exec rm -f {} \;
 
     - name: Compile the firmware
+      timeout-minutes: 1200
       id: compile
       run: |
         cd openwrt
