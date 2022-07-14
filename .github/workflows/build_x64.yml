@@ -55,6 +55,7 @@ jobs:
           sudo -E apt-get -qq clean
           sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           docker image prune -a -f
+          git config --global init.defaultBranch main
           mkdir -p workspace
 
       - name: Checkout
