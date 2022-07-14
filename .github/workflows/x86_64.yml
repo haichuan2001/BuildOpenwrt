@@ -52,9 +52,9 @@ jobs:
 
     - name: Load custom feeds
       run: |
-        [ -e $FEEDS_SH ] && cp $FEEDS_SH  $GITHUB_WORKSPACE/openwrt/$FEEDS_SH
-        chmod +x $GITHUB_WORKSPACE/openwrt/$FEEDS_SH
-        cd $GITHUB_WORKSPACE/openwrt
+        [ -e $FEEDS_SH ] && cp $FEEDS_SH  openwrt/$FEEDS_SH
+        chmod +x openwrt/$FEEDS_SH
+        cd openwrt
         $FEEDS_SH
 
     - name: Update feeds
@@ -69,14 +69,14 @@ jobs:
 
     - name: Load custom settings
       run: |
-        [ -e $DIY_SH ] && cp $DIY_SH  $GITHUB_WORKSPACE/openwrt/$DIY_SH
-        chmod +x $GITHUB_WORKSPACE/openwrt/$DIY_SH
-        cd $GITHUB_WORKSPACE/openwrt
+        [ -e $DIY_SH ] && cp $DIY_SH  openwrt/$DIY_SH
+        chmod +x openwrt/$DIY_SH
+        cd openwrt
         $DIY_SH
 
     - name: Load configuration
       run: |
-        [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $GITHUB_WORKSPACE/openwrt/.config
+        [ -e $CONFIG_FILE ] && cp $CONFIG_FILE openwrt/.config
         cd openwrt
         make defconfig
 
