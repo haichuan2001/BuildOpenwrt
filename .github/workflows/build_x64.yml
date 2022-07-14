@@ -117,14 +117,6 @@ jobs:
             echo "::set-output name=REBUILD_TOOLCHAIN::true"
           fi
 
-      - name: Load Custom Feeds
-        run: |
-          [ -e $FEEDS_SH ] && cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
-          chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
-          cd $OPENWRT_ROOT_PATH
-          echo $FEEDS_SH
-          ./$FEEDS_SH
-          df -h
 
       - name: Install Feeds
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
