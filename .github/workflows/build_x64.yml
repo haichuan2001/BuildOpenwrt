@@ -122,7 +122,8 @@ jobs:
           [ -e $FEEDS_SH ] && cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
           chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
           cd $OPENWRT_ROOT_PATH
-          $FEEDS_SH
+          echo $FEEDS_SH
+          ./$FEEDS_SH
           df -h
 
       - name: Install Feeds
@@ -139,7 +140,7 @@ jobs:
           chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
           cd $OPENWRT_ROOT_PATH
           make defconfig
-          $DIY_SH
+          ./$DIY_SH
 
       - name: Compile Tools
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
@@ -305,7 +306,8 @@ jobs:
           [ -e $FEEDS_SH ] && cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
           chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
           cd $OPENWRT_ROOT_PATH/
-          $FEEDS_SH
+          echo $FEEDS_SH
+          ./$FEEDS_SH
           df -h
           
       - name: Install Feeds
@@ -322,7 +324,7 @@ jobs:
           chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
           cd $OPENWRT_ROOT_PATH
           make defconfig
-          $DIY_SH
+          ./$DIY_SH
 
       - name: Free up disk space
         if: env.FREE_UP_DISK == 'true'
