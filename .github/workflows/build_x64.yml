@@ -121,6 +121,7 @@ jobs:
       - name: Install Feeds
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
         run: |
+          echo "Install Feeds toolchain"
           cd $OPENWRT_ROOT_PATH
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -295,14 +296,18 @@ jobs:
         run: |
           [ -e $FEEDS_SH ] && cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
           chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
-          cd $OPENWRT_ROOT_PATH/
+          cd $OPENWRT_ROOT_PATH
           echo $FEEDS_SH
-          #./$FEEDS_SH
+          ./$FEEDS_SH
           
       - name: Install Feeds
         run: |
           cd $OPENWRT_ROOT_PATH
+          echo "Before Clean Feeds"
+          ./scripts/feeds clean
+          echo "Before Update Feeds"
           ./scripts/feeds update -a
+          echo "After Update Feeds"
           ./scripts/feeds install -a
           echo "After Install Feeds"
 
