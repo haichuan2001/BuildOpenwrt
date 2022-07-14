@@ -288,12 +288,14 @@ jobs:
           cd $OPENWRT_ROOT_PATH
           chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
           $OPENWRT_ROOT_PATH/$FEEDS_SH
+          df -h
           
       - name: Install Feeds
         run: |
           cd $OPENWRT_ROOT_PATH
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+          df -h
 
       - name: Load Custom Configuration
         run: |
@@ -314,12 +316,14 @@ jobs:
           sudo -E apt-get -q purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
+          df -h
 
       - name: Download DL Package
         id: download
         run: |
           cd $OPENWRT_ROOT_PATH
           make download -j$(nproc) || make download -j1 V=s
+          df -h
 
       - name: Compile Packages
         run: |
