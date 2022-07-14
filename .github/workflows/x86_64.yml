@@ -86,10 +86,11 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo rm -rf /usr/share/dotnet
-        docker image prune -a -f
+        sudo docker image prune -a -f
         sudo -E apt-get -q purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
+        df -h
 
     - name: Download package
       timeout-minutes: 1200
@@ -99,6 +100,7 @@ jobs:
         make download -j1 || make download -j$(nproc) V=s 
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        df -h
 
     - name: Compile the firmware
       timeout-minutes: 1200
