@@ -297,7 +297,7 @@ jobs:
           chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
           cd $OPENWRT_ROOT_PATH/
           echo $FEEDS_SH
-          ./$FEEDS_SH
+          #./$FEEDS_SH
           
       - name: Install Feeds
         run: |
