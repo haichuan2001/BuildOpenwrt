@@ -71,7 +71,7 @@ jobs:
 
       - name: Generate Toolchain Config
         run: |
-          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
+          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           echo -e "\nCONFIG_ALL=y" >> $OPENWRT_ROOT_PATH/.config
           echo -e "\nCONFIG_ALL_NONSHARED=y" >> $OPENWRT_ROOT_PATH/.config
           cd $OPENWRT_ROOT_PATH
@@ -117,6 +117,14 @@ jobs:
             echo "::set-output name=REBUILD_TOOLCHAIN::true"
           fi
 
+      - name: Load Custom Feeds
+        run: |
+          [ -e $FEEDS_SH ] && cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
+          cd $OPENWRT_ROOT_PATH
+          chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
+          $OPENWRT_ROOT_PATH/$FEEDS_SH
+          df -h
+
       - name: Install Feeds
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
         run: |
@@ -124,6 +132,14 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           make defconfig
+
+      - name: Load Custom Configuration
+        run: |
+          [ -e $CUSTOMIZE_SH ] && cp $CUSTOMIZE_SH $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
+          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
+          cd $OPENWRT_ROOT_PATH
+          chmod +x $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
+          $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
 
       - name: Compile Tools
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
@@ -286,7 +302,7 @@ jobs:
 
       - name: Load Custom Feeds
         run: |
-          [ -e $FEEDS_SH ] && mv $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
+          [ -e $FEEDS_SH ] && cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
           cd $OPENWRT_ROOT_PATH
           chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
           $OPENWRT_ROOT_PATH/$FEEDS_SH
@@ -297,16 +313,16 @@ jobs:
           cd $OPENWRT_ROOT_PATH
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+          make defconfig
           df -h
 
       - name: Load Custom Configuration
         run: |
-          [ -e $CUSTOMIZE_SH ] && mv $CUSTOMIZE_SH $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
-          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
+          [ -e $CUSTOMIZE_SH ] && cp $CUSTOMIZE_SH $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
+          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           cd $OPENWRT_ROOT_PATH
           chmod +x $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
           $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
-          make defconfig
 
       - name: Free up disk space
         if: env.FREE_UP_DISK == 'true'
