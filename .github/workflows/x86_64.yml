@@ -31,7 +31,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Initialize environment
+    - name: Initialize Environment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -43,14 +43,14 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
-    - name: Clone source code
+    - name: Clone Source Code
       working-directory: /workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: Load custom feeds
+    - name: Load Custom Feeds
       run: |
         [ -e $FEEDS_SH ] && cp $FEEDS_SH  openwrt/$FEEDS_SH
         chmod +x openwrt/$FEEDS_SH
@@ -58,12 +58,12 @@ jobs:
         echo $FEEDS_SH
         ./$FEEDS_SH
 
-    - name: Update feeds
+    - name: Update Feeds
       run: |
         cd openwrt 
         ./scripts/feeds update -a
 
-    - name: Install feeds
+    - name: Install Feeds
       run: |
         cd openwrt 
         ./scripts/feeds install -a
@@ -78,7 +78,7 @@ jobs:
         echo $DIY_SH
         ./$DIY_SH
 
-    - name: Free up disk space
+    - name: Free UP Disk Space
       if: env.FREE_UP_DISK == 'true'
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -90,7 +90,7 @@ jobs:
         sudo -E apt-get -qq clean
         df -h
 
-    - name: Download package
+    - name: Download Package
       timeout-minutes: 1200
       id: package
       run: |
@@ -100,7 +100,7 @@ jobs:
         find dl -size -1024c -exec rm -f {} \;
         df -h
 
-    - name: Compile the firmware
+    - name: Compile Firmware
       timeout-minutes: 1200
       id: compile
       run: |
@@ -112,18 +112,18 @@ jobs:
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
-    - name: Check space usage
+    - name: Check Space Usage
       if: (!cancelled())
       run: df -hT
 
-    - name: Upload bin directory
+    - name: Upload Bin Directory
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
-    - name: Organize files
+    - name: Organize Files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
@@ -132,14 +132,14 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
 
-    - name: Upload firmware directory
+    - name: Upload Firmware Directory
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: Generate release tag
+    - name: Generate Release TAG
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
@@ -147,7 +147,7 @@ jobs:
         touch release.txt
         echo "::set-output name=status::success"
 
-    - name: Upload firmware to release
+    - name: Upload Firmware TO Release
       uses: softprops/action-gh-release@master
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
@@ -158,7 +158,7 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
-    - name: Delete workflow runs
+    - name: Delete Runs
       uses: GitRML/delete-workflow-runs@main
       with:
         retain_days: 1

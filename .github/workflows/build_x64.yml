@@ -313,7 +313,6 @@ jobs:
           cd $OPENWRT_ROOT_PATH
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          df -h
 
       - name: Load Custom Configuration
         run: |
@@ -325,7 +324,7 @@ jobs:
           make defconfig
           ./$DIY_SH
 
-      - name: Free up disk space
+      - name: Free UP Disk Space
         if: env.FREE_UP_DISK == 'true'
         env:
           DEBIAN_FRONTEND: noninteractive
