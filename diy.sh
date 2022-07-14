@@ -15,3 +15,4 @@ rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
 
 # 去掉重复的ssl库
 sed -i 's/CONFIG_PACKAGE_libustream-mbedtls=y/# CONFIG_PACKAGE_libustream-mbedtls=y/g' .config
+sed -i 's/CONFIG_PACKAGE_libmbedtls=m/# CONFIG_PACKAGE_libmbedtls=m/g' .config
