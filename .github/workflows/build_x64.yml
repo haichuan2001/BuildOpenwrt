@@ -306,7 +306,6 @@ jobs:
           cd $OPENWRT_ROOT_PATH/
           echo $FEEDS_SH
           ./$FEEDS_SH
-          df -h
           
       - name: Install Feeds
         run: |
