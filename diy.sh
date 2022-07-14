@@ -9,6 +9,9 @@ rm -rf package/lean/luci-theme-argon
 [ -d package/lean ] && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
 [ -e feeds/luci/collections/luci/Makefile ] && sed -ri 's/luci-theme-bootstrap/luci-theme-argon/' feeds/luci/collections/luci/Makefile
 
-#删掉重复theme
+# 删掉重复theme
 rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
 [ -e package/feeds/kenzo/luci-app-mosdns/Makefile ] && sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
+
+# 去掉重复的ssl库
+sed -i 's/CONFIG_PACKAGE_libustream-mbedtls=y/# CONFIG_PACKAGE_libustream-mbedtls=y/g' .config
