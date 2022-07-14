@@ -68,19 +68,15 @@ jobs:
         cd openwrt 
         ./scripts/feeds install -a
 
-    - name: Load custom settings
+    - name: Load Custom Configuration
       run: |
         [ -e $DIY_SH ] && cp $DIY_SH  openwrt/$DIY_SH
+        [ -e $CONFIG_FILE ] && cp $CONFIG_FILE openwrt/.config
         chmod +x openwrt/$DIY_SH
         cd openwrt
+        make defconfig
         echo $DIY_SH
         ./$DIY_SH
-
-    - name: Load configuration
-      run: |
-        [ -e $CONFIG_FILE ] && cp $CONFIG_FILE openwrt/.config
-        cd openwrt
-        make defconfig
 
     - name: Free up disk space
       if: env.FREE_UP_DISK == 'true'

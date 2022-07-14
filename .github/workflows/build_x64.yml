@@ -139,6 +139,7 @@ jobs:
           [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
           cd $OPENWRT_ROOT_PATH
+          grep -in 'carbon' ./config
           make defconfig
           ./$DIY_SH
 
@@ -323,6 +324,7 @@ jobs:
           [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
           cd $OPENWRT_ROOT_PATH
+          grep -in 'carbon' /.config
           make defconfig
           ./$DIY_SH
 
