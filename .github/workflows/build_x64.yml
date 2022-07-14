@@ -26,6 +26,7 @@ env:
   TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
   FREE_UP_DISK: true
+  COMBINE_DISK: false
   TZ: Asia/Shanghai
 
 jobs:
@@ -209,6 +210,7 @@ jobs:
           docker image prune -a -f
 
       - name: Combine Disks
+        if: env.COMBINE_DISK == 'true'
         run: |
           sudo swapoff -a
           sudo rm -f /mnt/swapfile
@@ -385,10 +387,10 @@ jobs:
           echo '-----'
           echo 'df -h'
           df -h
-          echo '-----'
-          echo 'btrfs filesystem usage'
-          sudo btrfs filesystem usage $GITHUB_WORKSPACE
-          echo '-----'
+          #echo '-----'
+          #echo 'btrfs filesystem usage'
+          #sudo btrfs filesystem usage $GITHUB_WORKSPACE
+          #echo '-----'
 
       - name: Upload Bin Archive
         uses: actions/upload-artifact@main
