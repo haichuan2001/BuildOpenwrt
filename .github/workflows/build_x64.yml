@@ -20,7 +20,7 @@ env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
   SOURCE_BRANCH: master
   CONFIG_FILE: configs/x86_64.config
-  CUSTOMIZE_SH: diy.sh
+  DIY_SH: diy.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain
   TOOLCHAIN_RELEASE_UPLOAD: true
@@ -131,15 +131,15 @@ jobs:
           cd $OPENWRT_ROOT_PATH
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          make defconfig
 
       - name: Load Custom Configuration
         run: |
-          [ -e $CUSTOMIZE_SH ] && cp $CUSTOMIZE_SH $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
+          [ -e $DIY_SH ] && cp $DIY_SH $OPENWRT_ROOT_PATH/$DIY_SH
           [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           cd $OPENWRT_ROOT_PATH
-          chmod +x $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
-          $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
+          make defconfig
+          chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
+          $OPENWRT_ROOT_PATH/$DIY_SH
 
       - name: Compile Tools
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
@@ -313,16 +313,7 @@ jobs:
           cd $OPENWRT_ROOT_PATH
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          make defconfig
           df -h
-
-      - name: Load Custom Configuration
-        run: |
-          [ -e $CUSTOMIZE_SH ] && cp $CUSTOMIZE_SH $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
-          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
-          cd $OPENWRT_ROOT_PATH
-          chmod +x $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
-          $OPENWRT_ROOT_PATH/$CUSTOMIZE_SH
 
       - name: Free up disk space
         if: env.FREE_UP_DISK == 'true'
