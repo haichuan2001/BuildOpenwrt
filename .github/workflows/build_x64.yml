@@ -26,7 +26,7 @@ env:
   TOOLCHAIN_RELEASE_UPLOAD: true
   FIRMWARE_RELEASE_UPLOAD: true
   FREE_UP_DISK: true
-  COMBINE_DISK: false
+  COMBINE_DISK: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -304,13 +304,9 @@ jobs:
       - name: Install Feeds
         run: |
           cd $OPENWRT_ROOT_PATH
-          echo "Before Clean Feeds"
           ./scripts/feeds clean
-          echo "Before Update Feeds"
           ./scripts/feeds update -a
-          echo "After Update Feeds"
           ./scripts/feeds install -a
-          echo "After Install Feeds"
 
       - name: Load Custom Configuration
         run: |
