@@ -1,10 +1,29 @@
-#=================================================
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
-# Lisence: MIT
-# Author: P3TERX
-# Blog: https://p3terx.com
-#=================================================
+##########################################################################
+ # File Name: build_x64.yml
+ # Author: ecras_y@163.com
+ # Description: Build OpenWrt using GitHub Actions
+ # Lisence: MIT
+ # Created Time: 2022-07-14 07:20:14 UTC
+ # Modified Time: 2022-07-14 07:20:14 UTC
+ # Description: Thanks to P3TERX @ https://github.com/P3TERX/Actions-OpenWrt
+ # ┏┛ ┻━━━━━┛ ┻┓
+ # ┃           ┃
+ # ┃      ━     ┃
+ # ┃  ┳┛    ┗┳   ┃
+ # ┃           ┃
+ # ┃      ┻     ┃
+ # ┃           ┃
+ # ┗━┓      ┏━━━┛
+ #   ┃      ┃   神兽保佑
+ #   ┃      ┃   代码无虫
+ #   ┃      ┗━━━━━━━━━┓
+ #   ┃                ┣┓
+ #   ┃               ┏┛
+ #   ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛
+ #     ┃ ┫ ┫   ┃ ┫ ┫
+ #    ┗━┻━┛   ┗━┻━┛
+#########################################################################
+
 
 name: Build x86-64-openwrt
 
@@ -131,7 +150,6 @@ jobs:
         run: |
           [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           cd $OPENWRT_ROOT_PATH
-          grep -in 'carbon' ./.config
           make defconfig
 
       - name: Compile Tools
@@ -316,7 +334,6 @@ jobs:
           [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
           cd $OPENWRT_ROOT_PATH
-          grep -in 'carbon' ./.config
           make defconfig
           ./$DIY_SH
 

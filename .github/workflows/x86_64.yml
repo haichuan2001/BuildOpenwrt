@@ -1,9 +1,30 @@
-#=================================================
-# Description: Build OpenWrt using GitHub Actions
-# Lisence: MIT
-# Author: Carbon
-# Youtube Channel: 
-#=================================================
+##########################################################################
+ # File Name: x86_64.yml
+ # Description: Build OpenWrt using GitHub Actions
+ # Lisence: MIT
+ # Author: ecras_y@163.com
+ # Created Time: 2022-07-14 07:23:28 UTC
+ # Modified Time: 2022-07-14 07:23:28 UTC
+ # Description: Thanks to bigbugcc @ https://github.com/bigbugcc/OpenWrts 
+ # ┏┛ ┻━━━━━┛ ┻┓
+ # ┃           ┃
+ # ┃      ━     ┃
+ # ┃  ┳┛    ┗┳   ┃
+ # ┃           ┃
+ # ┃      ┻     ┃
+ # ┃           ┃
+ # ┗━┓      ┏━━━┛
+ #   ┃      ┃   神兽保佑
+ #   ┃      ┃   代码无虫
+ #   ┃      ┗━━━━━━━━━┓
+ #   ┃                ┣┓
+ #   ┃               ┏┛
+ #   ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛
+ #     ┃ ┫ ┫   ┃ ┫ ┫
+ #    ┗━┻━┛   ┗━┻━┛
+#########################################################################
+
+
 
 name: Build_X86_64
 
