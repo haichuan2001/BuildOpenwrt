@@ -120,9 +120,9 @@ jobs:
       - name: Load Custom Feeds
         run: |
           [ -e $FEEDS_SH ] && cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
-          cd $OPENWRT_ROOT_PATH
           chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
-          $OPENWRT_ROOT_PATH/$FEEDS_SH
+          cd $OPENWRT_ROOT_PATH
+          $FEEDS_SH
           df -h
 
       - name: Install Feeds
@@ -136,10 +136,10 @@ jobs:
         run: |
           [ -e $DIY_SH ] && cp $DIY_SH $OPENWRT_ROOT_PATH/$DIY_SH
           [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
+          chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
           cd $OPENWRT_ROOT_PATH
           make defconfig
-          chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
-          $OPENWRT_ROOT_PATH/$DIY_SH
+          $DIY_SH
 
       - name: Compile Tools
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
@@ -303,9 +303,9 @@ jobs:
       - name: Load Custom Feeds
         run: |
           [ -e $FEEDS_SH ] && cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
-          cd $OPENWRT_ROOT_PATH
           chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
-          $OPENWRT_ROOT_PATH/$FEEDS_SH
+          cd $OPENWRT_ROOT_PATH/
+          $FEEDS_SH
           df -h
           
       - name: Install Feeds
@@ -314,6 +314,15 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           df -h
+
+      - name: Load Custom Configuration
+        run: |
+          [ -e $DIY_SH ] && cp $DIY_SH $OPENWRT_ROOT_PATH/$DIY_SH
+          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
+          chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
+          cd $OPENWRT_ROOT_PATH
+          make defconfig
+          $DIY_SH
 
       - name: Free up disk space
         if: env.FREE_UP_DISK == 'true'

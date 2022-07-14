@@ -54,7 +54,8 @@ jobs:
       run: |
         [ -e $FEEDS_SH ] && cp $FEEDS_SH  $GITHUB_WORKSPACE/openwrt/$FEEDS_SH
         chmod +x $GITHUB_WORKSPACE/openwrt/$FEEDS_SH
-        $GITHUB_WORKSPACE/openwrt/$FEEDS_SH
+        cd $GITHUB_WORKSPACE/openwrt
+        $FEEDS_SH
 
     - name: Update feeds
       run: |
@@ -70,7 +71,8 @@ jobs:
       run: |
         [ -e $DIY_SH ] && cp $DIY_SH  $GITHUB_WORKSPACE/openwrt/$DIY_SH
         chmod +x $GITHUB_WORKSPACE/openwrt/$DIY_SH
-        $GITHUB_WORKSPACE/openwrt/$DIY_SH
+        cd $GITHUB_WORKSPACE/openwrt
+        $DIY_SH
 
     - name: Load configuration
       run: |
