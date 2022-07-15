@@ -27,11 +27,3 @@ rm -rf package/lean/luci-theme-argon
 # sed -i 's/CONFIG_PACKAGE_libmbedtls/# CONFIG_PACKAGE_libmbedtls/g' .config
 # sed -i 's/CONFIG_LIBMBEDTLS_HAVE_SSE2/# CONFIG_LIBMBEDTLS_HAVE_SSE2/g' .config
 
-# 替换CPU TYPE
-if grep 'CONFIG_TARGET_BOARD="x86"' .config
-then
-    if grep 'CONFIG_TARGET_SUBTARGET="64"' .config
-    then
-        sed -ri 's/CONFIG_CPU_TYPE.*/CONFIG_CPU_TYPE="AMD64"/g' .config
-    fi
-fi
