@@ -14,18 +14,18 @@
 
 
 # 替换默认theme
+# rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
 rm -rf package/lean/luci-theme-argon
 [ -d package/lean ] && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
 [ -e feeds/luci/collections/luci/Makefile ] && sed -i 's/luci-theme-bootstrap/luci-theme-argon/' feeds/luci/collections/luci/Makefile
 
-# 删掉重复theme
-rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
+# 修复mosdns依赖错误
 [ -e package/feeds/kenzo/luci-app-mosdns/Makefile ] && sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
 
 # 去掉重复的ssl库
-sed -i 's/CONFIG_PACKAGE_libustream-mbedtls/# CONFIG_PACKAGE_libustream-mbedtls/g' .config
-sed -i 's/CONFIG_PACKAGE_libmbedtls/# CONFIG_PACKAGE_libmbedtls/g' .config
-sed -i 's/CONFIG_LIBMBEDTLS_HAVE_SSE2/# CONFIG_LIBMBEDTLS_HAVE_SSE2/g' .config
+# sed -i 's/CONFIG_PACKAGE_libustream-mbedtls/# CONFIG_PACKAGE_libustream-mbedtls/g' .config
+# sed -i 's/CONFIG_PACKAGE_libmbedtls/# CONFIG_PACKAGE_libmbedtls/g' .config
+# sed -i 's/CONFIG_LIBMBEDTLS_HAVE_SSE2/# CONFIG_LIBMBEDTLS_HAVE_SSE2/g' .config
 
 # 替换CPU TYPE
 if grep 'CONFIG_TARGET_BOARD="x86"' .config
