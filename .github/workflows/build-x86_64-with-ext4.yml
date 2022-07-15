@@ -38,7 +38,7 @@ on:
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
   SOURCE_BRANCH: master
-  CONFIG_FILE: configs/x86_64.config
+  CONFIG_FILE: configs/x86_64-with-ext4.config
   DIY_SH: diy.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain

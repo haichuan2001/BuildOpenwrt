@@ -38,7 +38,7 @@ on:
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
   SOURCE_BRANCH: master
-  CONFIG_FILE: configs/raspberry.config
+  CONFIG_FILE: configs/raspberry-with-squash.config
   DIY_SH: diy.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain
