@@ -14,6 +14,6 @@ rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
 [ -e package/feeds/kenzo/luci-app-mosdns/Makefile ] && sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
 
 # 去掉重复的ssl库
-sed -i 's/CONFIG_PACKAGE_libustream-mbedtls=y/# CONFIG_PACKAGE_libustream-mbedtls=n/g' .config
-sed -i 's/CONFIG_PACKAGE_libmbedtls=m/# CONFIG_PACKAGE_libmbedtls=n/g' .config
-sed -i 's/CONFIG_LIBMBEDTLS_HAVE_SSE2=y/# CONFIG_LIBMBEDTLS_HAVE_SSE2=n/g' .config
+sed -i 's/CONFIG_PACKAGE_libustream-mbedtls/# CONFIG_PACKAGE_libustream-mbedtls/g' .config
+sed -i 's/CONFIG_PACKAGE_libmbedtls/# CONFIG_PACKAGE_libmbedtls/g' .config
+sed -i 's/CONFIG_LIBMBEDTLS_HAVE_SSE2/# CONFIG_LIBMBEDTLS_HAVE_SSE2/g' .config
