@@ -20,7 +20,7 @@ rm -rf package/lean/luci-theme-argon
 [ -e feeds/luci/collections/luci/Makefile ] && sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 # 修复mosdns依赖错误
-[ -e package/feeds/kenzo/luci-app-mosdns/Makefile ] && sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
+# [ -e package/feeds/kenzo/luci-app-mosdns/Makefile ] && sed -ri  's#mosdns[-_]neo#mosdns#g' package/feeds/kenzo/luci-app-mosdns/Makefile
 
 # 去掉重复的ssl库
 # sed -i 's/CONFIG_PACKAGE_libustream-mbedtls/# CONFIG_PACKAGE_libustream-mbedtls/g' .config
