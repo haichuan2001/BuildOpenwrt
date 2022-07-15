@@ -2,7 +2,7 @@
 Build Openwrt with actions
 
 ## 项目介绍
-使用GitHub Actions自动化编译L大的OpenWrt固件
+使用GitHub Actions自动化编译L大的OpenWrt固件  
 支持IPV6路由
 
 ## 支持X86-64和树莓派
