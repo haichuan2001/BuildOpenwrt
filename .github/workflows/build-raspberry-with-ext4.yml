@@ -25,7 +25,7 @@
 
 
 
-name: Build raspberry-openwrt
+name: Build raspberry-ext4
 
 on:
   repository_dispatch:

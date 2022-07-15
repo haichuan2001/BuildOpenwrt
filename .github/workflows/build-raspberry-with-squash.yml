@@ -25,7 +25,7 @@
 
 
 
-name: Build raspberry-openwrt
+name: Build raspberry-squash
 
 on:
   repository_dispatch:
