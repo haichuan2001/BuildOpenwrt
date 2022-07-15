@@ -1,10 +1,8 @@
 ##########################################################################
- # File Name: build_x64.yml
+ # File Name: build_raspberry.yml
  # Author: ecras_y@163.com
- # Description: Build OpenWrt using GitHub Actions
- # Lisence: MIT
- # Created Time: 2022-07-14 07:20:14 UTC
- # Modified Time: 2022-07-14 07:20:14 UTC
+ # Created Time: 2022-07-15 03:48:50 UTC
+ # Modified Time: 2022-07-15 03:48:50 UTC
  # Description: Thanks to P3TERX @ https://github.com/P3TERX/Actions-OpenWrt
  # ┏┛ ┻━━━━━┛ ┻┓
  # ┃           ┃
@@ -25,7 +23,9 @@
 #########################################################################
 
 
-name: Build x86-64-openwrt
+
+
+name: Build raspberry-openwrt
 
 on:
   repository_dispatch:
@@ -38,7 +38,7 @@ on:
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
   SOURCE_BRANCH: master
-  CONFIG_FILE: configs/x86_64.config
+  CONFIG_FILE: configs/raspberry.config
   DIY_SH: diy.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain
@@ -389,6 +389,7 @@ jobs:
             mv key-build.pub $(usign -F -p key-build.pub)
           fi
           cd $OPENWRT_ROOT_PATH
+          echo "dtparam=i2c_arm=on,audio=on" >> target/linux/bcm27xx/image/config.txt
           mkdir -p files/etc/uci-defaults/
           mkdir -p files/www/snapshots
           cp -r bin/targets files/www/snapshots
