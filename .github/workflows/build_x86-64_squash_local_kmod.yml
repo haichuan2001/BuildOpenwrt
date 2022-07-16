@@ -1,8 +1,8 @@
-##########################################################################
- # File Name: build_raspberry.yml
+##************************************************************************
+ # File Name: build_x86-64_squash_local_kmod.yml
  # Author: ecras_y@163.com
- # Created Time: 2022-07-15 03:48:50 UTC
- # Modified Time: 2022-07-15 03:48:50 UTC
+ # Created Time: 2022-07-16 15:40:34 UTC
+ # Modified Time: 2022-07-16 15:40:34 UTC
  # Description: Thanks to P3TERX @ https://github.com/P3TERX/Actions-OpenWrt
  # ┏┛ ┻━━━━━┛ ┻┓
  # ┃           ┃
@@ -20,12 +20,11 @@
  #   ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛
  #     ┃ ┫ ┫   ┃ ┫ ┫
  #    ┗━┻━┛   ┗━┻━┛
-#########################################################################
+##**********************************************************************/
 
 
 
-
-name: Build raspberry-ext4
+name: Build x86-64 SQUASH with Local Kmod
 
 on:
   repository_dispatch:
@@ -38,7 +37,7 @@ on:
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
   SOURCE_BRANCH: master
-  CONFIG_FILE: configs/raspberry-with-ext4.config
+  CONFIG_FILE: configs/x86_64-with-squash.config
   DIY_SH: diy.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain
@@ -389,7 +388,6 @@ jobs:
             mv key-build.pub $(usign -F -p key-build.pub)
           fi
           cd $OPENWRT_ROOT_PATH
-          echo "dtparam=i2c_arm=on,audio=on" >> target/linux/bcm27xx/image/config.txt
           mkdir -p files/etc/uci-defaults/
           mkdir -p files/www/snapshots
           cp -r bin/targets files/www/snapshots
@@ -480,7 +478,7 @@ jobs:
         uses: mknejp/delete-release-assets@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
+          tag: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-Local-Kmod
           fail-if-no-assets: false
           fail-if-no-release: false
           assets: "*"
@@ -492,7 +490,7 @@ jobs:
           name: openwrt-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
           allowUpdates: true
           replacesArtifacts: true
-          tag: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
+          tag: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-Local-Kmod
           body: ${{ env.BUILD_DATE }}
           commit: ${{ env.CURRENT_BRANCH }}
           token: ${{ secrets.GITHUB_TOKEN }}
