@@ -17,7 +17,7 @@ Build Openwrt with actions
 5. 该系列workflow会自动保存toolchain至release
 6. 重复编译时会自动拉取已经编译保存的toolchain
 
-### 不使用本地kmod软件源,带有with remote kmod
+### 不使用本地kmod软件源,带有default
 1. x86-64_ext4：x86_64的ext4文件系统格式workflow
 2. x86-64_squash：x86_64的squash文件系统格式workflow
 3. raspberry_squash：树莓派4B的squash文件系统格式workflow
