@@ -1,8 +1,8 @@
 ##************************************************************************
- # File Name: build_x86-64_squash_remote_kmod.yml
+ # File Name: build_raspberry_squash_default.yml
  # Author: ecras_y@163.com
- # Created Time: 2022-07-16 15:43:16 UTC
- # Modified Time: 2022-07-16 15:43:16 UTC
+ # Created Time: 2022-07-16 15:31:09 UTC
+ # Modified Time: 2022-07-16 15:31:09 UTC
  # Description: Thanks to P3TERX @ https://github.com/P3TERX/Actions-OpenWrt
  # ┏┛ ┻━━━━━┛ ┻┓
  # ┃           ┃
@@ -23,7 +23,8 @@
 ##**********************************************************************/
 
 
-name: Build x86-64 SQUASH
+
+name: Build Raspberry SQUASH
 
 on:
   repository_dispatch:
@@ -36,7 +37,7 @@ on:
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
   SOURCE_BRANCH: master
-  CONFIG_FILE: configs/x86_64-with-squash.config
+  CONFIG_FILE: configs/raspberry-with-squash.config
   DIY_SH: diy.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain
@@ -368,7 +369,20 @@ jobs:
       - name: Generate Firmware
         id: generate
         run: |
+          if grep -q $DEVICE_TARGET/$DEVICE_SUBTARGET $GITHUB_WORKSPACE/data/support-targets.txt; then
+            cd $OPENWRT_ROOT_PATH
+            git clone https://git.openwrt.org/project/usign.git
+            cd usign
+            cmake .
+            make
+            sudo mv usign /bin
+            mkdir -p $OPENWRT_ROOT_PATH/files/etc/opkg/keys
+            cd $OPENWRT_ROOT_PATH/files/etc/opkg/keys
+            wget -q https://openwrt.cc/keys/key-build.pub
+            mv key-build.pub $(usign -F -p key-build.pub)
+          fi
           cd $OPENWRT_ROOT_PATH
+          echo "dtparam=i2c_arm=on,audio=on" >> target/linux/bcm27xx/image/config.txt
           make package/install -j$(nproc) || make package/install -j1 V=s
           make target/install -j$(nproc) || make target/install -j1 V=s
           make json_overview_image_info
