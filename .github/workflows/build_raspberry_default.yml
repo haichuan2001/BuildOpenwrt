@@ -23,7 +23,7 @@
 ##**********************************************************************/
 
 
-name: Build Raspberry EXT4
+name: Build Raspberry
 
 on:
   repository_dispatch:
