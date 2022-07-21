@@ -10,7 +10,7 @@ Build Openwrt with actions
 可以考虑将ext4和squash的workflow分开进行。
 
 ### 预配置本地kmod软件源workflows文件名带有kmod结尾
-1. X86-64：x86_64系统格式workflows
+1. x86-64：x86_64系统格式workflows
 4. raspberry：树莓派4B系统格式workflows
 5. 该系列workflows会自动保存toolchain至release
 6. 重复编译时会自动拉取已经编译保存的toolchain
@@ -49,4 +49,4 @@ Build Openwrt with actions
 请填写当地ISP服务商提供的IPv6 DNS地址 
 4. 当地ISP服务商提供的DNS地址查看方法：  
 PPoE拨号方式：主菜单进入状态->概览，可以查看  
-DHCP方式：请查看上级路由的信息
+DHCP和静态IP方式：请查看上级路由提供的信息
