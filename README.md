@@ -27,9 +27,9 @@ Build Openwrt with actions
 2. diy.sh：修改该文件自定义固件系统选项
 
 ### Release固件发布
-1. openwrt-x86-64-Local-Kmod：预配置本地kmod软件源的x86-64固件
+1. openwrt-x86-64-Kmod：预配置本地kmod软件源的x86-64固件
 2. openwrt-x86-64：不使用本地kmod软件源的x86-64固件
-3. openwrt-bcm27xx-bcm2711-Local-Kmod：预配置本地kmod软件源的树莓派4B固件
+3. openwrt-bcm27xx-bcm2711-Kmod：预配置本地kmod软件源的树莓派4B固件
 4. openwrt-bcm27xx-bcm2711：不使用本地kmod软件源的树莓派4B固件
 5. toolchain-image：编译工具链，方便workflow一次编译多次使用
 
