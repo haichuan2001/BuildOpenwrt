@@ -369,18 +369,6 @@ jobs:
       - name: Generate Firmware
         id: generate
         run: |
-          if grep -q $DEVICE_TARGET/$DEVICE_SUBTARGET $GITHUB_WORKSPACE/data/support-targets.txt; then
-            cd $OPENWRT_ROOT_PATH
-            git clone https://git.openwrt.org/project/usign.git
-            cd usign
-            cmake .
-            make
-            sudo mv usign /bin
-            mkdir -p $OPENWRT_ROOT_PATH/files/etc/opkg/keys
-            cd $OPENWRT_ROOT_PATH/files/etc/opkg/keys
-            wget -q https://openwrt.cc/keys/key-build.pub
-            mv key-build.pub $(usign -F -p key-build.pub)
-          fi
           cd $OPENWRT_ROOT_PATH
           make package/install -j$(nproc) || make package/install -j1 V=s
           make target/install -j$(nproc) || make target/install -j1 V=s
