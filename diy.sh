@@ -20,6 +20,6 @@ rm -rf package/lean/luci-theme-argon
 [ -e feeds/luci/collections/luci/Makefile ] && sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 # fix patch compile error
-rm -rf target/linux/generic/backport-5.15/702-v5.19-34-eth-mtk_ppe-fix-up-after-merge.patch
+# rm -rf target/linux/generic/backport-5.15/702-v5.19-34-eth-mtk_ppe-fix-up-after-merge.patch
 
 echo "DIY Completed!!!"
