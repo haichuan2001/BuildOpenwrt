@@ -9,9 +9,12 @@
 #!/bin/bash
 
 # passwall
+echo "Adding xiaorouji passwall"
 echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packages" >> feeds.conf.default
 echo "src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> feeds.conf.default
+
 # ssrp
+echo "Adding ShadowSocksR Plus+"
 echo "src-git ssrp https://github.com/fw876/helloworld.git" >> feeds.conf.default
 
 echo "Add Feeds Completed!!!"

@@ -328,7 +328,6 @@ jobs:
 
       - name: Load Custom Configuration
         run: |
-          echo "Before Load Custom Configuration"
           [ -e $DIY_SH ] && cp $DIY_SH $OPENWRT_ROOT_PATH/$DIY_SH
           [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
