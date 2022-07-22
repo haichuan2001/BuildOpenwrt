@@ -54,4 +54,10 @@ DHCP和静态IP方式：请查看上级路由提供的信息
 建议切换至新加的ssr plus
 6. ssr plus 目前测试良好，vultr和banwagon节点都挺稳定，基本没有出现断流抽风  
 7. 建议使用kmod固件，里面自带的软件包，是和固件一起编译生成的，不会出现类库冲突问题  
+8. diy.sh将默认shell更改为bash了，所以在make menuconfig里面需要激活选择bash  
+  
+  
+  
+  
+
 
