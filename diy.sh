@@ -19,7 +19,4 @@ rm -rf package/lean/luci-theme-argon
 [ -d package/lean ] && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
 [ -e feeds/luci/collections/luci/Makefile ] && sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
-# add cpu type to x86_64
-[ -e target/linux/x86/64/target.mk ] && sed -i '/BOARDNAME:=x86_64/aCPU_TYPE:=amd64' target/linux/x86/64/target.mk
-
 echo "DIY Completed!!!"
