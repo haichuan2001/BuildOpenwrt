@@ -49,4 +49,7 @@ Build Openwrt with actions
 请填写当地ISP服务商提供的IPv6 DNS地址 
 4. 当地ISP服务商提供的DNS地址查看方法：  
 PPoE拨号方式：主菜单进入状态->概览，可以查看  
-DHCP和静态IP方式：请查看上级路由提供的信息
+DHCP和静态IP方式：请查看上级路由提供的信息  
+5. passwall缺乏维护之后，对于连接不理想的节点，间接性断流严重  
+建议切换至新加的ssr plus
+6. ssr plus 目前测试良好，vlutr和banwagon节点都挺稳定，基本没有出现断流抽风
