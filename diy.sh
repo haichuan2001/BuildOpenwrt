@@ -17,7 +17,6 @@ rm -rf package/base-files/files/etc/banner
 cp $GITHUB_WORKSPACE/data/banner package/base-files/files/etc/banner
 
 # 替换默认theme
-# rm -rf feeds/kenzo/luci-theme-argon feeds/kenzo/luci-theme-argonne
 rm -rf package/lean/luci-theme-argon
 mkdir -p package/lean
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
