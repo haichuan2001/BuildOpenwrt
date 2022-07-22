@@ -10,14 +10,14 @@ Build Openwrt with actions
 可以考虑将ext4和squash的workflow分开进行。
 
 ### 预配置本地kmod软件源workflows文件名带有kmod结尾
-1. x86-64：x86_64系统格式workflows
+1. x86-64：x86-64系统格式workflows
 4. raspberry：树莓派4B系统格式workflows
 5. 该系列workflows会自动保存toolchain至release
 6. 重复编译时会自动拉取已经编译保存的toolchain
 
 ### 不使用本地kmod软件源workflows文件名带有default结尾
-1. x86-64：x86_64系统格式workflows
-3. raspberry：树莓派4B系统格式workflow
+1. x86-64：x86-64系统格式workflows
+3. raspberry：树莓派4B系统格式workflows
 5. 该系列workflows会自动保存toolchain至release
 6. 重复编译时会自动拉取已经编译保存的toolchain
 
