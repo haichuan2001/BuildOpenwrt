@@ -15,7 +15,7 @@ echo "Changing default LAN IP to 192.168.2.1"
 
 # 替换默认ash为bash
 echo "Changing default shell from ash to bash"
-[-e package/base-files/files/etc/passwd ] && sed -i 's/\/bin\/ash/\/bin\/bash/g' package/base-files/files/etc/passwd
+[ -e package/base-files/files/etc/passwd ] && sed -i 's/\/bin\/ash/\/bin\/bash/g' package/base-files/files/etc/passwd
 
 # 替换默认banner
 echo "Replacing default ssh banner with $GITHUB_WORKSPACE/data/banner"
