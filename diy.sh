@@ -1,9 +1,9 @@
 #########################################################################
 # File Name: diy.sh
-# Author: ecras_y@163.com
-# Description: ecras_y@163.com
-# Created Time: Fri 15 Jul 2022 02:22:58 AM UTC
-# Modified Time: Fri 15 Jul 2022 02:22:58 AM UTC
+# Author: Carbon (ecras_y@163.com)
+# Description: feel free to use
+# Created Time: 2022-07-23 13:01:29 UTC
+# Modified Time: 2022-07-23 13:04:32 UTC
 #########################################################################
 
 

@@ -1,12 +1,13 @@
 #########################################################################
 # File Name: feeds.sh
-# Author: ecras_y@163.com
-# Description: ecras_y@163.com
-# Created Time: Fri 15 Jul 2022 02:47:37 AM UTC
-# Modified Time: Fri 15 Jul 2022 02:47:37 AM UTC
+# Author: Carbon (ecras_y@163.com)
+# Description: feel free to use
+# Created Time: 2022-07-23 13:04:43 UTC
+# Modified Time: 2022-07-23 13:04:49 UTC
 #########################################################################
 
 #!/bin/bash
+
 
 # passwall
 echo "Adding xiaorouji passwall"

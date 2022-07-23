@@ -1,5 +1,5 @@
 # BuildOpenwrt
-Build Openwrt with actions
+Build OpenWrt with actions
 
 ## 项目介绍
 使用GitHub Actions自动化编译L大的OpenWrt固件  
