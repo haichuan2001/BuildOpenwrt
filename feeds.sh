@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-23 13:04:43 UTC
-# Modified Time: 2022-07-23 14:11:53 UTC
+# Modified Time: 2022-07-23 14:14:13 UTC
 #########################################################################
 
 #!/bin/bash
@@ -15,6 +15,7 @@ echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packa
 echo "src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> feeds.conf.default
 
 # passwall2
+echo "Adding xiaorouji passwall2"
 echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> feeds.conf.default
 
 # ssrp
