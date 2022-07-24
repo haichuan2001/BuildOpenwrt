@@ -1,12 +1,12 @@
-# BuildOpenwrt
+# BuildOpenWrt
 Build OpenWrt with actions
 
 ## 项目介绍
 使用GitHub Actions自动化编译L大的OpenWrt固件  
-支持IPv6路由功能
+开启默认支持IPv6路由功能
 
 ## 支持X86-64和树莓派4B
-由于actions的虚拟机很容易空间爆炸，  
+如果actions的虚拟机空间爆炸，  
 可以考虑将ext4和squash的workflow分开进行。
 
 ### 预配置本地kmod软件源workflows文件名带有kmod结尾
