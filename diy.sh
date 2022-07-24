@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-23 13:01:29 UTC
-# Modified Time: 2022-07-23 13:04:32 UTC
+# Modified Time: 2022-07-24 05:00:16 UTC
 #########################################################################
 
 
@@ -21,6 +21,11 @@ echo "Changing default shell from ash to bash"
 echo "Replacing default ssh banner with $GITHUB_WORKSPACE/data/banner"
 rm -rf package/base-files/files/etc/banner
 cp $GITHUB_WORKSPACE/data/banner package/base-files/files/etc/banner
+
+# 添加model修改脚本
+echo "Adding mode.sh"
+cp $GITHUB_WORKSPACE/data/model.sh package/base-files/files/etc/
+chmod +x package/base-files/files/etc/model.sh
 
 # 替换默认theme
 echo "Adding theme argon"
