@@ -41,8 +41,8 @@ Build OpenWrt with actions
   支持使用工具GParted对已经烧写完固件的设备，  
   进行分区大小调整。
 
-### passwall 设置说明
-1. 这个版本的passwall的适应性没以前的强  
+### 代理 设置说明
+1. 这个版本的passwall的适应性没以前的强，但还是比passwall2好用    
 2. 网络->Lan->基本设置->静态地址->使用自定义的 DNS 服务器：  
   请填写路由器地址或者最好是当地ISP服务商提供的IPv4 DNS地址  
   网关地址请留空，否则概览会将Lan口显示为Wan口，
@@ -52,8 +52,8 @@ Build OpenWrt with actions
 4. 当地ISP服务商提供的DNS地址查看方法：  
   PPoE拨号方式：主菜单进入状态->概览，可以查看  
   DHCP和静态IP方式：请查看上级路由提供的信息  
-5. 尝试添加passwall2,不好用，使用分流模式不但无法上网，  
-  关闭功能之后整个机器都无法连接dns    
+5. 尝试添加passwall2，不好用，使用分流模式不但无法上网，  
+  关闭功能之后整个机器都无法连接DNS    
   建议使用passwall或者ShadowSocksR Plus  
 6. passwall的分流模式和ShadowSocksR Plus目前测试良好，  
   vultr和banwagon节点都挺稳定，基本没有出现断流抽风  
