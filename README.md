@@ -11,15 +11,17 @@ Build OpenWrt with actions
 
 ### 预配置本地kmod软件源workflows文件名带有kmod结尾
 1. x86-64：x86-64系统格式workflows
-4. raspberry：树莓派4B系统格式workflows
-5. 该系列workflows会自动保存toolchain至release
-6. 重复编译时会自动拉取已经编译保存的toolchain
+2. raspberry：树莓派4B系统格式workflows
+3. 该系列workflows会自动保存toolchain至release
+4. 重复编译时会自动拉取已经编译保存的toolchain  
+5. kmod打包了Lede大的代码库里除了cjdns之外的所有packages  
+6. cjdns编译出错，但是编译却没有停止下来，所以编译剔除了这个包
 
 ### 不使用本地kmod软件源workflows文件名带有default结尾
 1. x86-64：x86-64系统格式workflows
-3. raspberry：树莓派4B系统格式workflows
-5. 该系列workflows会自动保存toolchain至release
-6. 重复编译时会自动拉取已经编译保存的toolchain
+2. raspberry：树莓派4B系统格式workflows
+3. 该系列workflows会自动保存toolchain至release
+4. 重复编译时会自动拉取已经编译保存的toolchain
 
 ### 定制脚本
 1. feeds.sh：修改该文件添加额外的package，  
