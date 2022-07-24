@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-23 13:01:29 UTC
-# Modified Time: 2022-07-24 05:00:16 UTC
+# Modified Time: 2022-07-24 07:24:04 UTC
 #########################################################################
 
 
@@ -23,7 +23,7 @@ rm -rf package/base-files/files/etc/banner
 cp $GITHUB_WORKSPACE/data/banner package/base-files/files/etc/banner
 
 # 添加model修改脚本
-echo "Adding mode.sh"
+echo "Adding model.sh"
 cp $GITHUB_WORKSPACE/data/model.sh package/base-files/files/etc/
 chmod +x package/base-files/files/etc/model.sh
 

@@ -2,7 +2,7 @@
  # File Name: build_raspberry_kmod.yml
  # Author: ecras_y@163.com
  # Created Time: 2022-07-16 15:20:22 UTC
- # Modified Time: 2022-07-23 12:43:30 UTC
+ # Modified Time: 2022-07-24 07:24:39 UTC
  # Description: Thanks to bigbugcc @ https://github.com/bigbugcc/OpenWrts
  # Description: Thanks to P3TERX @ https://github.com/P3TERX/Actions-OpenWrt
  # Description: Thanks to SuLingGG @ https://github.com/SuLingGG/OpenWrt-Rpi
@@ -39,7 +39,7 @@ on:
 env:
   SOURCE_URL: https://github.com/coolsnowwolf/lede
   SOURCE_BRANCH: master
-  CONFIG_FILE: configs/raspberry.config
+  CONFIG_FILE: configs/raspberry_kmod.config
   DIY_SH: diy.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain
