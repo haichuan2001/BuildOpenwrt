@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-26 10:58:29 CST
-# Modified Time: 2022-07-26 04:35:13 UTC
+# Modified Time: 2022-07-26 04:50:16 UTC
 #########################################################################
 
 
@@ -39,9 +39,9 @@ common="common.$ext1"
     rm -f $common
 }
 
-# remove empty spaces
-sed '/^\s*$/d' $1 > $file1
-sed '/^\s*$/d' $2 > $file2
+# remove empty lines
+sed '/^$/d' $var1 > $file1
+sed '/^$/d' $var2 > $file2
 
 for text1 in `cat  $file1`
 do
