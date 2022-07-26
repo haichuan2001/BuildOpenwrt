@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-26 10:58:29 CST
-# Modified Time: 2022-07-26 05:03:58 UTC
+# Modified Time: 2022-07-26 05:15:38 UTC
 #########################################################################
 
 
@@ -33,7 +33,7 @@ src2="${var2%%.*}"
 
 file1="$src1.tmp.$ext1"
 file2="$src2.tmp.$ext2"
-common="`dirname $var1`/common.$ext1"
+common="$(dirname $var1)/common.$ext1"
 
 [  -e "$common" ] && {
     rm -f $common
@@ -43,19 +43,19 @@ common="`dirname $var1`/common.$ext1"
 sed '/^$/d' $var1 > $file1
 sed '/^$/d' $var2 > $file2
 
-for text1 in `cat  $file1`
+for line1 in $(cat  $file1)
 do
-    for text2 in `cat $file2`
+    for line2 in $(cat $file2)
     do
-        if [ "$text1" =  "$text2" ]
+        if [ "$line1" =  "$line2" ]
         then
-            echo $text1 >> $common
-            # echo $text2
+            echo $line1 >> $common
+            # echo $line2
         fi
     done
 done
 
-filter=`cat $common`
+filter=$(cat $common)
 
 result1="$src1.out.$ext1"
 result2="$src2.out.$ext2"
