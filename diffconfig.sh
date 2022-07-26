@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-26 10:58:29 CST
-# Modified Time: 2022-07-26 04:50:16 UTC
+# Modified Time: 2022-07-26 05:03:58 UTC
 #########################################################################
 
 
@@ -33,7 +33,7 @@ src2="${var2%%.*}"
 
 file1="$src1.tmp.$ext1"
 file2="$src2.tmp.$ext2"
-common="common.$ext1"
+common="`dirname $var1`/common.$ext1"
 
 [  -e "$common" ] && {
     rm -f $common
