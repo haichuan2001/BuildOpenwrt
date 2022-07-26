@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-26 10:58:29 CST
-# Modified Time: 2022-07-26 04:21:20 UTC
+# Modified Time: 2022-07-26 04:35:13 UTC
 #########################################################################
 
 
@@ -55,7 +55,7 @@ do
     done
 done
 
-filter=`sed 's/ /|/g' $common`
+filter=`cat $common`
 
 result1="$src1.out.$ext1"
 result2="$src2.out.$ext2"
