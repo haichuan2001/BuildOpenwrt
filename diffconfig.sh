@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-26 10:58:29 CST
-# Modified Time: 2022-07-26 12:15:18 CST
+# Modified Time: 2022-07-26 04:21:20 UTC
 #########################################################################
 
 
@@ -13,10 +13,16 @@ IFS_old=$IFS
 IFS=$'\n'
 
 
-[ "$#" != "2" ]&& {
+[ "$#" != "2" ] && {
     echo "input error"
     exit 0
 }
+
+if [ ! -e $1 ] || [ ! -e $2 ] 
+then
+    echo "file not exist!!!"
+    exit 0
+fi
 
 var1=$1
 var2=$2
