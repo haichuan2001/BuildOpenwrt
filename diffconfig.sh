@@ -3,14 +3,11 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-26 10:58:29 CST
-# Modified Time: 2022-07-26 05:15:38 UTC
+# Modified Time: 2022-07-27 09:40:25 UTC
 #########################################################################
 
 
 #!/bin/bash
-
-IFS_old=$IFS
-IFS=$'\n'
 
 
 [ "$#" != "2" ] && {
@@ -23,6 +20,9 @@ then
     echo "file not exist!!!"
     exit 0
 fi
+
+IFS_old=$IFS
+IFS=$'\n'
 
 var1=$1
 var2=$2
