@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-23 13:04:43 UTC
-# Modified Time: 2022-07-29 12:55:59 UTC
+# Modified Time: 2022-07-29 13:56:54 UTC
 #########################################################################
 
 #!/bin/bash
@@ -24,8 +24,6 @@ echo "src-git ssrp https://github.com/fw876/helloworld.git;master" >> feeds.conf
 
 # add argon theme
 echo "Adding theme argon"
-rm -rf package/lean/luci-theme-argon
-mkdir -p package/lean
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
+echo "src-git carbon https://github.com/ecrasy/openwrt-package.git;master" >> feeds.conf.default
 
 echo "Add Feeds Completed!!!"

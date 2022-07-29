@@ -2,7 +2,7 @@
  # File Name: build_raspberry_default.yml
  # Author: ecras_y@163.com
  # Created Time: 2022-07-16 15:23:37 UTC
- # Modified Time: 2022-07-23 12:43:20 UTC
+ # Modified Time: 2022-07-29 13:21:35 UTC
  # Description: Thanks to bigbugcc @ https://github.com/bigbugcc/OpenWrts
  # Description: Thanks to P3TERX @ https://github.com/P3TERX/Actions-OpenWrt
  # Description: Thanks to SuLingGG @ https://github.com/SuLingGG/OpenWrt-Rpi
@@ -144,7 +144,7 @@ jobs:
           echo "Install Feeds toolchain"
           cd $OPENWRT_ROOT_PATH
           ./scripts/feeds update -a
-          ./scripts/feeds install -a
+          ./scripts/feeds install -a -f
 
       - name: Load Custom Configuration
         run: |
@@ -325,7 +325,7 @@ jobs:
           cd $OPENWRT_ROOT_PATH
           ./scripts/feeds clean
           ./scripts/feeds update -a
-          ./scripts/feeds install -a
+          ./scripts/feeds install -a -f
 
       - name: Load Custom Configuration
         run: |

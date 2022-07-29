@@ -3,7 +3,7 @@
 # Author: Carbon (ecras_y@163.com)
 # Description: feel free to use
 # Created Time: 2022-07-23 13:01:29 UTC
-# Modified Time: 2022-07-29 13:05:15 UTC
+# Modified Time: 2022-07-29 14:53:10 UTC
 #########################################################################
 
 
@@ -34,6 +34,10 @@ cp $GITHUB_WORKSPACE/data/99-ipv6 package/base-files/files/etc/hotplug.d/iface/9
 chmod +x package/base-files/files/etc/hotplug.d/iface/99-ipv6
 
 # 替换默认theme
-[ -e feeds/luci/collections/luci/Makefile ] && sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+# [ -e feeds/luci/collections/luci/Makefile ] && sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+
+# 删掉煞笔库
+# 煞笔们不要再引用这智障煞笔库了
+rm -rf package/libs/mbedtls
 
 echo "DIY Completed!!!"
