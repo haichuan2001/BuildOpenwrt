@@ -2,7 +2,7 @@
  # File Name: build_x86-64_default.yml
  # Author: ecras_y@163.com
  # Created Time: 2022-07-16 15:39:29 UTC
- # Modified Time: 2022-07-30 05:11:36 UTC
+ # Modified Time: 2022-07-30 06:09:29 UTC
  # Description: Thanks to bigbugcc @ https://github.com/bigbugcc/OpenWrts
  # Description: Thanks to P3TERX @ https://github.com/P3TERX/Actions-OpenWrt
  # Description: Thanks to SuLingGG @ https://github.com/SuLingGG/OpenWrt-Rpi
@@ -40,6 +40,7 @@ env:
   SOURCE_BRANCH: master
   CONFIG_FILE: configs/x86_64.config
   DIY_SH: diy.sh
+  FIX_SH: fix.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain
   TOOLCHAIN_RELEASE_UPLOAD: true
