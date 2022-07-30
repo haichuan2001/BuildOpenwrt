@@ -2,7 +2,7 @@
  # File Name: build_raspberry_kmod.yml
  # Author: ecras_y@163.com
  # Created Time: 2022-07-16 15:20:22 UTC
- # Modified Time: 2022-07-29 13:21:51 UTC
+ # Modified Time: 2022-07-30 05:15:52 UTC
  # Description: Thanks to bigbugcc @ https://github.com/bigbugcc/OpenWrts
  # Description: Thanks to P3TERX @ https://github.com/P3TERX/Actions-OpenWrt
  # Description: Thanks to SuLingGG @ https://github.com/SuLingGG/OpenWrt-Rpi
@@ -25,7 +25,6 @@
 ##**********************************************************************/
 
 
-
 name: Build Raspberry With Local Kmod
 
 on:
@@ -41,6 +40,7 @@ env:
   SOURCE_BRANCH: master
   CONFIG_FILE: configs/raspberry_kmod.config
   DIY_SH: diy.sh
+  FIX_SH: fix.sh
   FEEDS_SH: feeds.sh
   TOOLCHAIN_TAG: toolchain
   TOOLCHAIN_RELEASE_UPLOAD: true
@@ -92,7 +92,7 @@ jobs:
 
       - name: Generate Toolchain Config
         run: |
-          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
+          cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           echo -e "\nCONFIG_ALL=y" >> $OPENWRT_ROOT_PATH/.config
           echo -e "\nCONFIG_ALL_NONSHARED=y" >> $OPENWRT_ROOT_PATH/.config
           cd $OPENWRT_ROOT_PATH
@@ -138,20 +138,6 @@ jobs:
             echo "::set-output name=REBUILD_TOOLCHAIN::true"
           fi
 
-
-      - name: Install Feeds
-        if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
-        run: |
-          echo "Install Feeds toolchain"
-          cd $OPENWRT_ROOT_PATH
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a -f
-
-      - name: Load Custom Configuration
-        run: |
-          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
-          cd $OPENWRT_ROOT_PATH
-          make defconfig
 
       - name: Compile Tools
         if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
@@ -315,10 +301,9 @@ jobs:
 
       - name: Load Custom Feeds
         run: |
-          [ -e $FEEDS_SH ] && cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
+          cp $FEEDS_SH $OPENWRT_ROOT_PATH/$FEEDS_SH
           chmod +x $OPENWRT_ROOT_PATH/$FEEDS_SH
           cd $OPENWRT_ROOT_PATH
-          echo $FEEDS_SH
           ./$FEEDS_SH
           
       - name: Install Feeds
@@ -330,12 +315,15 @@ jobs:
 
       - name: Load Custom Configuration
         run: |
-          [ -e $DIY_SH ] && cp $DIY_SH $OPENWRT_ROOT_PATH/$DIY_SH
-          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
+          cp $DIY_SH $OPENWRT_ROOT_PATH/$DIY_SH
+          cp $FIX_SH $OPENWRT_ROOT_PATH/$FIX_SH
+          cp $CONFIG_FILE $OPENWRT_ROOT_PATH/.config
           chmod +x $OPENWRT_ROOT_PATH/$DIY_SH
+          chmod +x $OPENWRT_ROOT_PATH/$FIX_SH
           cd $OPENWRT_ROOT_PATH
-          make defconfig
+          ./$FIX_SH
           ./$DIY_SH
+          make defconfig
 
       - name: Free UP Disk Space
         if: env.FREE_UP_DISK == 'true'
