@@ -4,7 +4,7 @@ Build OpenWrt with actions
 ## 项目介绍
 使用GitHub Actions自动化编译L大的OpenWrt固件  
 开启默认支持IPv6路由功能  
-希望有一天openwrt很去掉煞笔库mbedtls  
+希望有一天openwrt仓库默认去掉煞笔库mbedtls  
 垃圾玩意mbedtls  
 煞笔shadow socks请不要再dep这个库了  
 有openssl你干嘛不用阿，脑瘫是嘛  
