@@ -63,7 +63,9 @@ Build OpenWrt with actions
   是和固件一起编译生成的，不会出现类库冲突问题  
 8. diy.sh将默认shell更改为bash了，  
   所以在make menuconfig里面需要激活选择bash  
-  
+9. 剔除turbo acc和chinadns-ng  
+  测试中发现，1000M网络，这两个软件反而负作用  
+  需要这两个软件的，可以在“系统->软件包”中单独安装
   
   
   
