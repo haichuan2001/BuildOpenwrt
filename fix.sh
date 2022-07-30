@@ -9,7 +9,7 @@
 
 #!/bin/bash
 
-# ĞŞÕıcjdns±àÒë´íÎó
+# ä¿®æ­£cjdnsç¼–è¯‘é”™è¯¯
 sed -i 's/-Wno-error=stringop-overflow//g' package/feeds/routing/cjdns/Makefile
 sed -i 's/-Wno-error=stringop-overread//g' package/feeds/routing/cjdns/Makefile
 
